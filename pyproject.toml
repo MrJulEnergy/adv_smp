@@ -1,0 +1,7 @@
+[project]
+name = "adv_smp"
+version = "0.1.0"
+description = "Worksheet folder for Advanced Simulation Methods"
+readme = "README.pdf"
+requires-python = ">=3.11"
+dependencies = []

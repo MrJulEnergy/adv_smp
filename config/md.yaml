@@ -1,0 +1,25 @@
+ensemble:
+  name: nvt
+  dt: 0.5 # fs time step
+  temperature_schedule:
+    name: constant
+    T0: ... # K
+  thermostat_chain:
+    chain_length: 3
+    chain_steps: 2
+    sy_steps: 3
+    tau: 1000
+
+# dynamics_checks:
+#   - name: forces_uncertainty
+#     threshold: 1.5
+#   - name: energy_uncertainty
+#     threshold: 5.0
+#     per_atom: false
+
+duration: ... # fs
+n_inner: 50 # compiled innner steps
+sampling_rate: ...  # dump interval
+buffer_size: 2500
+dr_threshold: 0.5 # Neighborlist skin
+extra_capacity: 0

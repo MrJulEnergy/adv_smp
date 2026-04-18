@@ -1,0 +1,42 @@
+force_eval:
+  method: quickstep
+  DFT:
+    mgrid:
+      cutoff: 200
+      rel_cutoff: 60
+      ngrids: 5
+    QS: 
+      eps_filter_matrix: 0.0
+      eps_pgf_orb: 1e-10
+      eps_default: 1e-9
+      extrapolation_order: 3
+    SCF:
+      scf_guess: restart
+      max_scf: 100
+      eps_scf: 1e-06
+      OT:
+        minimizer: diis
+        preconditioner: full_single_inverse
+      outer_scf:
+        max_scf: 100
+        eps_scf: 1e-06
+    XC:
+      xc_functional:
+          _: PBE
+      xc_grid:
+        xc_smooth_rho: null
+        use_finer_grid: true
+        xc_deriv: SPLINE2
+    basis_set_file_name: BASIS_MOLOPT
+    potential_file_name: GTH_POTENTIALS
+  subsys:
+    kind:
+      O:
+        basis_set: TZV2P-MOLOPT-GTH-q6
+        potential: GTH-PBE-q6
+      C:
+        basis_set: TZV2P-MOLOPT-GTH-q4
+        potential: GTH-PBE-q4
+      H:
+        basis_set: TZV2P-MOLOPT-GTH-q1
+        potential: GTH-PBE-q1

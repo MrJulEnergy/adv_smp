@@ -1,0 +1,74 @@
+n_epochs: 1000
+patience: 500
+data_parallel: true
+
+data:
+  batch_size: 16
+  valid_batch_size: 50
+
+metrics:
+  - name: energy
+    reductions: [mae]
+  - name: forces
+    reductions: [mae]
+
+loss:
+  - name: energy
+    loss_type: crps
+  - name: forces
+    loss_type: crps
+
+model:
+  name: gmnn
+  basis:
+    name: bessel
+    n_basis: 16
+    r_max: 5.5
+
+  nn:
+  - 32
+  - 32
+
+  ensemble:
+    kind: shallow
+    n_members: 8
+
+  empirical_corrections:
+    - name: "exponential"
+      r_max: 1.5
+
+  calc_stress: false
+  use_ntk: false
+  b_init: zeros
+  w_init: lecun
+  scale_shift_dtype: fp64
+  descriptor_dtype: fp32
+  readout_dtype: fp32
+
+callbacks:
+- name: csv
+
+optimizer:
+  name: adamw
+  emb_lr:   0.005
+  nn_lr:    0.007
+  scale_lr: 0.001
+  shift_lr: 0.001
+  rep_scale_lr: 0.001
+  rep_prefactor_lr: 0.0001
+  gradient_clipping: 10.0
+
+  kwargs: 
+    weight_decay: 0.0001
+
+  schedule:
+    name: cyclic_cosine
+    period: 50
+    decay_factor: 0.95
+
+checkpoints:
+  ckpt_interval: 500
+
+progress_bar: 
+  disable_epoch_pbar: false
+  disable_batch_pbar: true
