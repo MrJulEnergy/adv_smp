@@ -4,4 +4,18 @@ version = "0.1.0"
 description = "Worksheet folder for Advanced Simulation Methods"
 readme = "README.pdf"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "apax[cuda]>=0.14.0",
+    "ase>=3.28.0",
+    "h5py>=3.16.0",
+    "ipsuite>=0.2.8",
+    "ipykernel>=7.2.0",
+    "mace-torch>=0.3.15",
+    "matplotlib>=3.10.8",
+    "mlipx>=0.1.5",
+    "packmol>=21.2.1",
+    "torch-dftd>=0.5.3",
+    "zndraw>=0.6.0",
+    "znh5md>=0.4.8",
+    "zntrack>=0.8.10",
+]
